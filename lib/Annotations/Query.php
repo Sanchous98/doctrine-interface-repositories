@@ -17,7 +17,7 @@ final class Query
     public const RESULT_ALL = 0;
     public const RESULT_SINGLE = 1;
     public const RESULT_SCALAR = 2;
-    public const RESULT_SINGLE_SCALAR = self::RESULT_SINGLE|self::RESULT_SCALAR;
+    public const RESULT_SINGLE_SCALAR = self::RESULT_SINGLE | self::RESULT_SCALAR;
 
     /**
      * @var string DQL
@@ -27,13 +27,14 @@ final class Query
 
     /**
      * @var int
+     * @Required
      * @psalm-var self::RESULT_*
      */
     public $resultType = self::RESULT_ALL;
     // TODO: Support native queries
     // public bool $native = false;
 
-    /** @psalm-param  self::RESULT_*  $resultType */
+    /** @psalm-param  self::RESULT_* $resultType */
     public function __construct(string $dql, int $resultType = self::RESULT_ALL)
     {
         $this->dql = $dql;
