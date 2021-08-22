@@ -40,9 +40,11 @@ final class InterfaceRepositoryFactory implements RepositoryFactory
         $methods = [];
 
         foreach ($reflect->getMethods() as $method) {
-            if (PHP_VERSION_ID < 80000 && count($method->getAttributes(Query::class)) !== 0) {
+            if (PHP_VERSION_ID < 80000 && count($method->getAttributes(Query::class))) {
                 $annotation = $method->getAttributes(Query::class)[0]->newInstance();
-            } else {
+            }
+
+            if (!isset($annotation)) {
                 $annotation = $this->annotationReader->getMethodAnnotation($method, Query::class);
             }
 
