@@ -55,7 +55,7 @@ class InterfaceRepositoryFactory implements RepositoryFactory
      * @psalm-param class-string $entityName
      * @psalm-param class-string $repository
      */
-    public function createRepositoryFromInterface(EntityManagerInterface $entityManager, string $entityName, string $repository): OverriddenEntityRepository
+    protected function createRepositoryFromInterface(EntityManagerInterface $entityManager, string $entityName, string $repository): OverriddenEntityRepository
     {
         $reflect = new ReflectionClass($repository);
         $methods = [];
